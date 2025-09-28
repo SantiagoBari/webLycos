@@ -11,7 +11,7 @@ export default function HomePage() {
           src="/Logo.jpeg"
           width={500}
           height={500} alt={''}         />
-        <h1>Lycos</h1>
+        <h1>Lykos</h1>
         <nav>
           <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
             <li><a href="#about">Sobre nosotros</a></li>
@@ -32,6 +32,9 @@ export default function HomePage() {
       <section id="about" style={{ marginBottom: '2rem' }}>
         <h3>Sobre nosotros</h3>
         <p>Aquí podés contar la historia de tu empresa o tus objetivos.</p>
+        <Image 
+          src="/Equipo.jpeg"
+          width={500} alt={''}         />
       </section>
 
       {/* Services Section */}
