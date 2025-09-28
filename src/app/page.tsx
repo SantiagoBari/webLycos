@@ -1,12 +1,17 @@
 // app/page.tsx
 import React from 'react';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
     <main style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
       {/* Header */}
       <header style={{ marginBottom: '2rem' }}>
-        <h1>Nombre de tu Empresa</h1>
+         <Image 
+          src="/Logo.jpeg"
+          width={500}
+          height={500} alt={''}         />
+        <h1>Lycos</h1>
         <nav>
           <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
             <li><a href="#about">Sobre nosotros</a></li>
