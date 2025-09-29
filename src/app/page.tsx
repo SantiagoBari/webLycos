@@ -1,65 +1,33 @@
 // app/page.tsx
 import React from 'react';
-import Image from 'next/image';
+import Header from '../components/header';
+import About from '../components/About';
 
 export default function HomePage() {
   return (
-    <main style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
+    <main style={{ fontFamily: 'sans-serif', padding: '2rem', gap: '1rem' }}>
       {/* Header */}
-      <header style={{ marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Image src="/Logo.jpeg" width={100} height={100} alt="Logo Lykos" />
-          <h1 style={{ margin: 0 }}>Lykos</h1>
-          <nav>
-            <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0, margin: 0 }}>
-              <li><a href="#about">Sobre nosotros</a></li>
-              <li><a href="#services">Servicios</a></li>
-              <li><a href="#contact">Contacto</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header/>
+
       {/* Hero Section */}
-      <section id="hero" style={{ marginBottom: '2rem' }}>
-        <h2>Bienvenido a nuestra empresa</h2>
-        <p>Una breve descripción de lo que hacemos y nuestros valores.</p>
-        <button>Conocer más</button>
+      <section id="hero" className="section">
+        <div className="max-w-[50%] mx-auto text-center">
+          <p>
+            Somos una empresa innovadora especializada en el desarrollo de soluciones blockchain, 
+            con un enfoque particular en tecnologías Web3. Además, creamos aplicaciones web modernas 
+            y personalizadas que impulsan la transformación digital de nuestros clientes. Nuestro equipo 
+            combina experiencia técnica y creatividad para ofrecer productos seguros, escalables y 
+            orientados al futuro, ayudando a empresas a prosperar en el mundo descentralizado.
+          </p>
+          <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded">Conocer más</button>
+        </div>
       </section>
 
       {/* About Section */}
-      <section id="about" style={{ marginBottom: '2rem' }}>
-        <h3>Sobre nosotros</h3>
-        <p>Aquí podés contar la historia de tu empresa o tus objetivos.</p>
-          <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
-            <li>
-              <Image 
-                src="/Facu.jpeg"
-                width={500}
-                height={500} alt={''}
-                className="team-photo"     />
-                <p> Facundo Atrio - CEO</p>
-            </li>
-            <li>
-              <Image 
-                src="/Mati.jpeg"
-                width={500}
-                height={500} alt={''}
-                className="team-photo"         />
-                <p> Matias Bogado - MKT</p>
-            </li>
-            <li>
-              <Image 
-                src="/Santi.jpeg"
-                width={500}
-                height={500} alt={''}
-                className="team-photo"         />
-                <p> Santiago Bari - CTO</p>
-            </li>
-          </ul>
-      </section>
+      <About/>
 
       {/* Services Section */}
-      <section id="services" style={{ marginBottom: '2rem' }}>
+      <section id="services" className="section">
         <h3>Servicios</h3>
         <ul>
           <li>Web3</li>
@@ -69,13 +37,13 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" style={{ marginBottom: '2rem' }}>
+      <section id="contact" className="section">
         <h3>Contacto</h3>
         <p>Podés poner tu mail, teléfono o formulario de contacto aquí.</p>
       </section>
 
       {/* Footer */}
-      <footer style={{ marginTop: '2rem', borderTop: '1px solid #ccc', paddingTop: '1rem' }}>
+      <footer style={{ padding: '2rem', borderTop: '1px solid #ccc', paddingTop: '1rem', background: '#164479ff' , color:'#fff' }}>
         <p>© {new Date().getFullYear()} Lykos</p>
       </footer>
     </main>
