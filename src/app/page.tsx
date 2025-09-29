@@ -7,7 +7,7 @@ export default function HomePage() {
     <main style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
       {/* Header */}
       <header style={{ marginBottom: '2rem' }}>
-        <ul>
+        <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
           <li>
             <Image 
               src="/Logo.jpeg"
