@@ -7,32 +7,18 @@ export default function HomePage() {
     <main style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
       {/* Header */}
       <header style={{ marginBottom: '2rem' }}>
-        <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
-          <li>
-            <Image 
-              src="/Logo.jpeg"
-              width={500}
-              height={500} alt={''}         />
-          </li>
-          <li>
-            <ol>
-              <li>
-                <h1>Lykos</h1>
-              </li>
-              <li>
-                <nav>
-                  <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
-                    <li><a href="#about">Sobre nosotros</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                  </ul>
-                </nav>
-              </li>
-            </ol>
-          </li>
-        </ul>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Image src="/Logo.jpeg" width={100} height={100} alt="Logo Lykos" />
+          <h1 style={{ margin: 0 }}>Lykos</h1>
+          <nav>
+            <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0, margin: 0 }}>
+              <li><a href="#about">Sobre nosotros</a></li>
+              <li><a href="#services">Servicios</a></li>
+              <li><a href="#contact">Contacto</a></li>
+            </ul>
+          </nav>
+        </div>
       </header>
-
       {/* Hero Section */}
       <section id="hero" style={{ marginBottom: '2rem' }}>
         <h2>Bienvenido a nuestra empresa</h2>
