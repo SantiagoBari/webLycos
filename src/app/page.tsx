@@ -32,9 +32,32 @@ export default function HomePage() {
       <section id="about" style={{ marginBottom: '2rem' }}>
         <h3>Sobre nosotros</h3>
         <p>Aquí podés contar la historia de tu empresa o tus objetivos.</p>
-        <Image 
-          src="/Equipo.jpeg"
-          width={500} alt={''}         />
+          <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
+            <li>
+              <Image 
+                src="/Facu.jpeg"
+                width={500}
+                height={500} alt={''}
+                className="team-photo"     />
+                <p> Facundo Atrio - CEO</p>
+            </li>
+            <li>
+              <Image 
+                src="/Mati.jpeg"
+                width={500}
+                height={500} alt={''}
+                className="team-photo"         />
+                <p> Matias Bogado - MKT</p>
+            </li>
+            <li>
+              <Image 
+                src="/Santi.jpeg"
+                width={500}
+                height={500} alt={''}
+                className="team-photo"         />
+                <p> Santiago Bari - CTO</p>
+            </li>
+          </ul>
       </section>
 
       {/* Services Section */}
