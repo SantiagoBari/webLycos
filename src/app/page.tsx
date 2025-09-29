@@ -7,18 +7,30 @@ export default function HomePage() {
     <main style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
       {/* Header */}
       <header style={{ marginBottom: '2rem' }}>
-         <Image 
-          src="/Logo.jpeg"
-          width={500}
-          height={500} alt={''}         />
-        <h1>Lykos</h1>
-        <nav>
-          <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
-            <li><a href="#about">Sobre nosotros</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#contact">Contacto</a></li>
-          </ul>
-        </nav>
+        <ul>
+          <li>
+            <Image 
+              src="/Logo.jpeg"
+              width={500}
+              height={500} alt={''}         />
+          </li>
+          <li>
+            <ol>
+              <li>
+                <h1>Lykos</h1>
+              </li>
+              <li>
+                <nav>
+                  <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', padding: 0 }}>
+                    <li><a href="#about">Sobre nosotros</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                  </ul>
+                </nav>
+              </li>
+            </ol>
+          </li>
+        </ul>
       </header>
 
       {/* Hero Section */}
@@ -64,9 +76,9 @@ export default function HomePage() {
       <section id="services" style={{ marginBottom: '2rem' }}>
         <h3>Servicios</h3>
         <ul>
-          <li>Servicio 1</li>
-          <li>Servicio 2</li>
-          <li>Servicio 3</li>
+          <li>Web3</li>
+          <li>Blockchain</li>
+          <li>Clases de doma</li>
         </ul>
       </section>
 
@@ -78,7 +90,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer style={{ marginTop: '2rem', borderTop: '1px solid #ccc', paddingTop: '1rem' }}>
-        <p>© {new Date().getFullYear()} Nombre de tu Empresa</p>
+        <p>© {new Date().getFullYear()} Lykos</p>
       </footer>
     </main>
   );
