@@ -1,13 +1,12 @@
 // app/page.tsx
 import React from 'react';
-import Header from '../components/header';
 import About from '../components/About';
 
 export default function HomePage() {
   return (
     <main style={{ fontFamily: 'sans-serif', padding: '2rem', gap: '1rem' }}>
       {/* Header */}
-      <Header/>
+     
 
       {/* Hero Section */}
       <section id="hero" className="section">
@@ -30,7 +29,7 @@ export default function HomePage() {
       <section id="services" className="section">
         <h3>Servicios</h3>
         <ul>
-          <li>Web3</li>
+          <li>Hosting Web3</li>
           <li>Blockchain</li>
           <li>Clases de doma</li>
         </ul>
@@ -39,7 +38,16 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="section">
         <h3>Contacto</h3>
-        <p>Podés poner tu mail, teléfono o formulario de contacto aquí.</p>
+        <p>facundo.atrio@lycos.com.ar</p>
+        <a
+            href="https://wa.me/5492616824346"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex justify-center items-center gap-2 text-lg"
+            >
+          <i className="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+
       </section>
 
       {/* Footer */}
