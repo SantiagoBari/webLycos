@@ -4,13 +4,14 @@ import About from '../components/About';
 
 export default function HomePage() {
   return (
-    <main style={{ fontFamily: 'sans-serif', padding: '2rem', gap: '1rem' }}>
-      {/* Header */}
-     
-
+    <main style={{ fontFamily: 'sans-serif', gap: '1rem' }}>
       {/* Hero Section */}
-      <section id="hero" className="section">
-        <div className="max-w-[50%] mx-auto text-center">
+      <section
+        id="hero"
+        className="section"
+        style={{ "--section-bg": `url("/HeroImage.jpg")` } as React.CSSProperties}
+      >
+        <div className="sectionContent">
           <p>
             Somos una empresa innovadora especializada en el desarrollo de soluciones blockchain, 
             con un enfoque particular en tecnologías Web3. Además, creamos aplicaciones web modernas 
@@ -26,32 +27,43 @@ export default function HomePage() {
       <About/>
 
       {/* Services Section */}
-      <section id="services" className="section">
-        <h3>Servicios</h3>
-        <ul>
-          <li>Hosting Web3</li>
-          <li>Blockchain</li>
-          <li>Clases de doma</li>
-        </ul>
+      <section
+        id="services"
+        className="section"
+        style={{ "--section-bg": `url("/ServicesImage.jpg")` } as React.CSSProperties}
+      >
+        <div className="sectionContent">
+          <h3>Servicios</h3>
+          <ul>
+            <li>Hosting Web3</li>
+            <li>Blockchain</li>
+            <li>Clases de doma</li>
+          </ul>
+        </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section">
-        <h3>Contacto</h3>
-        <p>facundo.atrio@lycos.com.ar</p>
-        <a
+      <section
+        id="contact"
+        className="section"
+        style={{ "--section-bg": `url("/ContactImage.jpg")` } as React.CSSProperties}
+      >
+        <div className="sectionContent">
+          <h3>Contacto</h3>
+          <p>facundo.atrio@lycos.com.ar</p>
+          <a
             href="https://wa.me/5492616824346"
             target="_blank"
             rel="noopener noreferrer"
             className="flex justify-center items-center gap-2 text-lg"
-            >
-          <i className="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-
+          >
+            <i className="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '2rem', borderTop: '1px solid #ccc', paddingTop: '1rem', background: '#164479ff' , color:'#fff' }}>
+      <footer style={{ padding: '2rem', borderTop: '1px solid #ccc', paddingTop: '1rem', background: '#164479ff', color: '#fff' }}>
         <p>© {new Date().getFullYear()} Lykos</p>
       </footer>
     </main>
