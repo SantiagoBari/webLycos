@@ -7,7 +7,7 @@ export default function Header() {
         <header className={styles.header}>
             <Image src="/Logo.jpeg" width={100} height={100} alt="Logo Lykos" />
             <div className={styles.logoText}>
-                <h1 className={styles.title}>Lykos</h1>
+                <h1 className={styles.title}><a href="#hero">Lykos</a></h1>
                 <nav>
                     <ul className={styles.navList}>
                         <li><a href="#about">Sobre nosotros</a></li>
