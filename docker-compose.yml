@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # 1. SERVICIO DE BACKEND (Flask + Gunicorn)
+  backend:
+    # Indica a Docker Compose que construya la imagen usando el Dockerfile en el directorio 'backend/'
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    # El puerto interno del contenedor de Flask/Gunicorn es 8000
+    expose:
+      - 8000
+    # Nombre de la red para que Nginx pueda referenciarlo por nombre
+    networks:
+      - webnet
+
+  # 2. SERVICIO DE FRONTEND (Next.js)
+  frontend:
+    # Construye la imagen usando el Dockerfile en el directorio 'frontend/'
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    # El puerto interno del contenedor de Next.js es 3000
+    expose:
+      - 3000
+    # Depende de que el backend se inicie primero (útil para el health check si lo incluyeras)
+    depends_on:
+      - backend
+    networks:
+      - webnet
+    # Monta el directorio público para Nginx si fuera a servir estáticos directamente (opcional, pero útil)
+    # volumes:
+    #   - ./frontend/public:/app/public
+
+  # 3. SERVICIO DE PROXY INVERSO (Nginx)
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    # Expone el puerto 80 del contenedor al puerto 80 del servidor host (público)
+    ports:
+      - "80:80"
+    # Monta el archivo de configuración de Nginx para que el contenedor lo use
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+    networks:
+      - webnet
+
+# Definición de la red interna de Docker (webnet)
+# Esta red permite que los contenedores se comuniquen entre sí usando los nombres de servicio (backend, frontend)
+networks:
+  webnet:
+    driver: bridge
