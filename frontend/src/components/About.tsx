@@ -1,4 +1,5 @@
 import styles from "./About.module.css";
+import Image from "next/image"
 
 export default function About() {
   return (
@@ -16,7 +17,7 @@ export default function About() {
         </p>
         <div className={styles.teamContainer}>
           <div className={styles.teamCard}>
-            <img
+            <Image
               src="/Facu.jpeg"
               alt="Facundo Atrio"
               className={styles.teamPhoto}
@@ -24,7 +25,7 @@ export default function About() {
             <h4>Facundo Atrio - CEO</h4>
           </div>
           <div className={styles.teamCard}>
-            <img
+            <Image
               src="/Mati.jpeg"
               alt="Matias Bogado"
               className={styles.teamPhoto}
@@ -32,7 +33,7 @@ export default function About() {
             <h4>Matias Bogado - MKT</h4>
           </div>
           <div className={styles.teamCard}>
-            <img
+            <Image
               src="/Santi.jpeg"
               alt="Santiago Bari"
               className={styles.teamPhoto}
@@ -40,7 +41,7 @@ export default function About() {
             <h4>Santiago Bari - CTO</h4>
           </div>
           <div className={styles.teamCard}>
-            <img
+            <Image
               src="/Satoshi.jpg"
               alt="Satoshi"
               className={styles.teamPhoto}
