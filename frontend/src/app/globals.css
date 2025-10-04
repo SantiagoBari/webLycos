@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+.section:nth-child(odd) {
+  background: linear-gradient(
+      to right,
+      rgba(40, 79, 117, 1) 0%, /* Color sólido a la izquierda */
+      rgba(40, 79, 117, 1) 52.5%, /* Inicio de transición */
+      rgba(40, 79, 117, 0) 67.5%, /* Fin de transición */
+      transparent 100% /* Transparente para mostrar la imagen */
+    ),
+    var(--section-bg, none) no-repeat center right / cover;
+  flex-direction: row;
+}
+
+.section:nth-child(even) {
+  background: linear-gradient(
+      to left,
+      rgba(40, 79, 117, 1) 0%, /* Color sólido a la derecha */
+      rgba(40, 79, 117, 1) 52.5%, /* Inicio de transición */
+      rgba(40, 79, 117, 0) 67.5%, /* Fin de transición */
+      transparent 100% /* Transparente para mostrar la imagen */
+    ),
+    var(--section-bg, none) no-repeat center left / cover;
+  flex-direction: row-reverse;
+}
+
+.sectionContent {
+  flex: 0 0 45%; /* Ocupa aproximadamente la región sólida */
+  max-width: 50%; /* Limita el ancho al 50% */
+  padding: 2rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.section:nth-child(odd) .sectionContent {
+  margin-right: auto; /* Alinea a la izquierda en secciones impares */
+  margin-left: 5%; /* Pequeño margen para no tocar el borde */
+}
+
+.section:nth-child(even) .sectionContent {
+  margin-left: auto; /* Alinea a la derecha en secciones pares */
+  margin-right: 5%; /* Pequeño margen para no tocar el borde */
+}
+
+@media (min-width: 768px) {
+  .section {
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    flex-direction: column;
+    min-height: 60vh;
+    padding: 1rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 1rem;
+  text-align: center;
+}

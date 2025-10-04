@@ -1,0 +1,26 @@
+.teamContainer {
+    padding-top:1rem;
+    padding-bottom:1rem;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  flex-wrap: wrap; /* para que baje a la siguiente línea si es pantalla pequeña */
+}
+
+.teamCard {
+  flex-basis: 30%;      /* ocupa aprox un tercio de la pantalla */
+  max-width: 300px;     /* límite de ancho */
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 4%;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.teamCard .teamPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
