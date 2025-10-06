@@ -1,5 +1,5 @@
 # 1. IMAGEN BASE: Usa una imagen ligera de Python (Basada en Debian)
-FROM python:3.11-slim
+FROM ubuntu
 
 # 2. DIRECTORIO DE TRABAJO
 WORKDIR /app
@@ -13,7 +13,7 @@ ENV LANG=C.UTF-8 \
 # 4. INSTALAR DEPENDENCIAS DE COMPILACIÓN
 # Necesario para compilar psycopg2-binary
 RUN apt-get update && \
-    apt-get install -y build-essential libpq-dev && \
+    apt-get install -y python3-pip build-essential libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # 5. COPIAR Y INSTALAR DEPENDENCIAS
