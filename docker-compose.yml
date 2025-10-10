@@ -21,7 +21,6 @@ services:
       DATABASE_HOST: db # Nombre del servicio Docker
       DATABASE_PORT: 5432 # Puerto interno de PostgreSQL
 
-
   # 2. SERVICIO DE FRONTEND (Next.js)
   frontend:
     build:
