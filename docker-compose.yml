@@ -21,38 +21,36 @@ services:
       DATABASE_HOST: db # Nombre del servicio Docker
       DATABASE_PORT: 5432 # Puerto interno de PostgreSQL
 
-  # 2. SERVICIO DE FRONTEND (Next.js)
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    expose:
-      - 3000
-    depends_on:
-      - backend
-    networks:
-      - webnet
-    # # Bloque de volumes opcional
-    # volumes:
-    #   - ./frontend/public:/app/public
 
-  # 3. SERVICIO DE PROXY INVERSO (Nginx)
-  nginx:
-    image: nginx:alpine
-    container_name: nginx_proxy
-    ports:
-      - "80:80"
-      # # Puerto HTTPS - Descomentar cuando uses Certbot y tengas dominio
-      # - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      # # Volúmenes SSL/Certbot - Descomentar para producción con dominio
-      # - certs:/etc/letsencrypt
-      # - certs-data:/usr/share/nginx/html/certbot
-    depends_on:
-      - frontend
-    networks:
-      - webnet
+  # 2. SERVICIO DE FRONTEND (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    expose:
+      - 3000
+    # CAMBIO 1: El frontend realmente no depende del backend para SERVIR archivos.
+    # Quitamos la dependencia explícita del backend aquí, para evitar circularidad
+    # y mejorar el tiempo de inicio.
+    # depends_on:
+    #   - backend 
+    networks:
+      - webnet
+
+  # 3. SERVICIO DE PROXY INVERSO (Nginx)
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    # CAMBIO 2: Nginx debe esperar a AMBOS (frontend para servir la web y backend para servir la API)
+    depends_on:
+      - frontend
+      - backend # ¡Añadimos esta dependencia crucial!
+    networks:
+      - webnet
 
   # 4. SERVICIO DE BASE DE DATOS (PostgreSQL - NUEVO)
   db:
