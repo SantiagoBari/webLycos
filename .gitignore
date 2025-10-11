@@ -6,3 +6,4 @@
 
 # Archivos comunes de Git/OS a ignorar
 .DS_Store
+*.swp
