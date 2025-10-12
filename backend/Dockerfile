@@ -21,8 +21,7 @@ RUN apt-get update && \
 # 5. COPIAR Y INSTALAR DEPENDENCIAS DE PYTHON
 COPY requirements.txt .
 # ELIMINAMOS --no-binary :all: y --break-system-packages (no son necesarios en esta imagen estable)
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 6. LIMPIEZA POST-INSTALACIÓN (Reducir el tamaño final)
 RUN apt-get remove -y build-essential libpq-dev && \
