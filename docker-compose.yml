@@ -12,12 +12,13 @@ services:
       - webnet
     # El backend necesita la base de datos para funcionar
     depends_on:
-      - db 
+      db: # AHORA ES UN OBJETO
+        condition: service_healthy # ¡ESPERA AL HEALTHCHECK!
     # Variables de entorno para la conexión a la DB (usadas por Flask)
     environment:
-      POSTGRES_USER: lykos_user
-      POSTGRES_PASSWORD: lykos_password # ¡Usar variables de entorno o Secretos en Prod!
-      POSTGRES_DB: lykos_db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
       DATABASE_HOST: db # Nombre del servicio Docker
       DATABASE_PORT: 5432 # Puerto interno de PostgreSQL
 
@@ -68,6 +69,11 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - webnet
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lykos_user -d lykos_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   # # 5. SERVICIO DE CERTBOT (Comentado)
   # # Descomentar para producción con dominio

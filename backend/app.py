@@ -44,10 +44,27 @@ class Producto(db.Model):
         }
 
 # ----------------------------------------------------
-# 3. RUTAS DE LA API
+# 3. INICIALIZACIÓN DE LA BASE DE DATOS (CORREGIDO)
+# ----------------------------------------------------
+# Este bloque ahora se ejecuta una sola vez cuando el contenedor arranca,
+# creando las tablas y los datos iniciales de forma segura.
+with app.app_context():
+    # Crea las tablas definidas por los modelos (e.g., Producto)
+    db.create_all()
+
+    # Opcional: Añadir datos iniciales si la tabla está vacía
+    if Producto.query.count() == 0:
+        db.session.add(Producto(nombre='Hosting Web3 Básico', precio=10.50))
+        db.session.add(Producto(nombre='Clases de Doma 1v1', precio=50.00))
+        db.session.commit()
+        print("Datos iniciales de productos creados.")
+
+
+# ----------------------------------------------------
+# 4. RUTAS DE LA API
 # ----------------------------------------------------
 
-# Ruta de estatus (manteniendo la ruta de prueba de antes)
+# Ruta de estatus
 @app.route('/api/status', methods=['GET'])
 def status():
     # Intenta hacer una consulta simple para verificar la conexión a la DB
@@ -56,9 +73,9 @@ def status():
         db_status = "Conectado a PostgreSQL"
     except Exception as e:
         db_status = f"Fallo de conexión a DB: {e}"
-    
+
     return jsonify({
-        "status": "running", 
+        "status": "running",
         "service": "Flask API",
         "db_status": db_status
     }), 200
@@ -68,23 +85,6 @@ def status():
 def get_productos():
     # Consulta todos los productos en la base de datos
     productos = Producto.query.all()
-    
+
     # Convierte la lista de objetos Producto a una lista de diccionarios JSON
     return jsonify([p.to_dict() for p in productos])
-
-# ----------------------------------------------------
-# 4. INICIALIZACIÓN DE LA BASE DE DATOS (Solo para el primer inicio)
-# ----------------------------------------------------
-@app.before_first_request
-def create_tables():
-    """Crea las tablas de la DB si no existen."""
-    with app.app_context():
-        # Crea las tablas definidas por los modelos (e.g., Producto)
-        db.create_all() 
-        
-        # Opcional: Añadir datos iniciales si la tabla está vacía
-        if Producto.query.count() == 0:
-            db.session.add(Producto(nombre='Hosting Web3 Básico', precio=10.50))
-            db.session.add(Producto(nombre='Clases de Doma 1v1', precio=50.00))
-            db.session.commit()
-            print("Datos iniciales de productos creados.")
